@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "pydantic-swift-code"
+version = "0.1.0"
+description = "pydantic SWIFT code type"
+authors = ["Artem Kuchumov <duketemon@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pydantic_swift_code"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = "2.9.2"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+mypy = "*"
+pylint = "*"
+pytest = "*"
+pytest-cov = "*"
+
+[tool.black]
+line-length = 99
+target-version = ["py39", "py310", "py311", "py312", "py313"]
+
+[tool.isort]
+profile = "black"
+
+[tool.pylint.messages_control]
+disable = [
+  "missing-module-docstring",
+  "missing-class-docstring",
+  "missing-function-docstring",
+]
+
+[tool.pytest.ini_options]
+testpaths = "src"
+addopts = [
+    "--strict-markers",
+    "--verbose",
+    "--cov=src",
+    "--cov-branch",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-fail-under=70"
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
