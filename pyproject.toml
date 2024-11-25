@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "pydantic-swift-code"
-version = "0.1.0"
-description = "pydantic SWIFT code type"
+version = "0.2.0"
+description = "pydantic SWIFT/BIC code type"
 authors = ["Artem Kuchumov <duketemon@gmail.com>"]
 readme = "README.md"
 packages = [{include = "pydantic_swift_code"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pydantic = "2.9.2"
+pydantic = "2.10.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "*"
@@ -16,6 +16,7 @@ mypy = "*"
 pylint = "*"
 pytest = "*"
 pytest-cov = "*"
+hypothesis = "*"
 
 [tool.black]
 line-length = 99
@@ -32,11 +33,11 @@ disable = [
 ]
 
 [tool.pytest.ini_options]
-testpaths = "src"
+testpaths = "tests"
 addopts = [
     "--strict-markers",
     "--verbose",
-    "--cov=src",
+    "--cov=pydantic_swift_code",
     "--cov-branch",
     "--cov-report=term-missing:skip-covered",
     "--cov-fail-under=70"

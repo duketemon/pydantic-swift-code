@@ -1,5 +1,5 @@
 ## Overview
-Micro-package that defines a SWIFT code type using the Pydantic package
+Micro-package that defines a SWIFT/BIC code type using the Pydantic package
 
 ## Installation
 Install from PyPI
@@ -13,21 +13,12 @@ pip install git@github.com:duketemon/pydantic-swift-code.git
 
 ## Usage
 ```python
-from typing import Optional
 from pydantic import BaseModel, field_validator
 from pydantic_swift_code import SwiftCode
 
 class BankAccount(BaseModel):
+    ...
     swift_code: SwiftCode
-
-    @field_validator("swift_code", mode="before")
-    @classmethod
-    def validate_swift_code_before_init(cls, swift_code: Optional[str]) -> str:
-        """Make input case-insensitive"""
-        if swift_code is None:
-            raise ValueError("Received None value, expected string")
-
-        return swift_code.upper()
 
     @field_validator("swift_code", mode="after")
     @classmethod
